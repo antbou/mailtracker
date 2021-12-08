@@ -28,7 +28,7 @@ Local docker configuration file for MYSQL
 # docker/db.env
 MYSQL_ROOT_PASSWORD=TO_CHANGE
 MYSQL_DATABASE=TO_CHANGE
-MYSQL_USER=TO_CHANGE
+MYSQL_USER=TO_CHANGE # must be different than "root"
 MYSQL_PASSWORD=TO_CHANGE
 ```
 
@@ -37,7 +37,7 @@ MYSQL_PASSWORD=TO_CHANGE
 docker-compose up
 ```
 
-Start the containers (once the images are created)
+Start the containers
 
 ```
 docker-compose start
