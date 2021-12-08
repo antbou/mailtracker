@@ -1,0 +1,15 @@
+services:
+  redis:
+    container_name: redis-Mailtracker
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+  mysql:
+    container_name: mysql-Mailtracker
+    image: mysql
+    restart: always
+    env_file:
+      - ./docker/db.env
+    ports:
+      - "9906:3306"
