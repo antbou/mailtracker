@@ -17,8 +17,8 @@ cd mailtracker
 
 ## Usage
 
-The different local variables are found in the `.env.php` file which must be located at the root of the project.
-The sample file is named `.env-exemple.php`
+The different local variables are found in the `db.env` file which must be located at the root of the project.
+The sample file is named `db-exemple.env`
 
 ### docker :
 
@@ -47,5 +47,4 @@ Stop the containers
 
 ```
 docker-compose stop
-
 ```
