@@ -17,13 +17,38 @@ cd mailtracker
 
 ## Usage
 
-The different local variables are found in the `db.env` file which must be located at the root of the project.
-The sample file is named `db-exemple.env`
+The different local variables are found in the .env file which must be located at the root of the project. An example file is available at the root of the project under .env.example
+
+#### MySQL
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=9906
+DB_DATABASE=<CHANGE>
+DB_USERNAME=<CHANGE>
+DB_PASSWORD=<CHANGE>
+```
+
+
+#### Redis
+```
+SESSION_DRIVER=redis
+SESSION_LIFETIME=120
+REDIS_CLIENT=predis
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=9379
+```
 
 ### docker :
 
-Local docker configuration file for MYSQL
+We used docker to facilitate the installation and development of the project. This way we can abstract the host on which the project is developed.
 
+Local docker configuration file for MYSQL. An example file is available in docker/db-exemple.env
+The sample file is named `db-exemple.env`
 ```
 # docker/db.env
 MYSQL_ROOT_PASSWORD=TO_CHANGE
