@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCiblesTable extends Migration
+class CreateTargetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCiblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cibles', function (Blueprint $table) {
+        Schema::create('targets', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('ip');
             $table->text('user_agent');
@@ -31,6 +31,6 @@ class CreateCiblesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cibles');
+        Schema::dropIfExists('targets');
     }
 }
