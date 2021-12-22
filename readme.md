@@ -6,7 +6,14 @@ Perform for NOSQL1
 
 | Tools                                         | Version |
 | --------------------------------------------- | ------- |
-| [Docker](https://docs.docker.com/get-docker/) | 20.10   |
+| [Composer](https://getcomposer.org/download/) | 2.1.6   |
+| [NPM](https://www.npmjs.com/)                 | 7.20    |
+| [Docker](https://www.docker.com/get-started)  | 20.10   |
+
+| Images (Docker)                                | 
+| ---------------------------------------------  | 
+| [redis](https://hub.docker.com/_/redis)          | 
+| [mysql](https://hub.docker.com/_/mysql)        | 
 
 ## Install
 
