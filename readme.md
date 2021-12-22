@@ -20,6 +20,10 @@ Perform for NOSQL1
 ```bash
 git clone https://github.com/antbou/mailtracker.git
 cd mailtracker
+composer i
+npm i
+npm run dev
+docker-compose up -d
 ```
 
 ## Usage
