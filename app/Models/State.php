@@ -10,4 +10,9 @@ class State extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function tracker()
+    {
+        return $this->hasMany(Tracker::class);
+    }
 }
