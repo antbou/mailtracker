@@ -16,11 +16,11 @@ class CreateTrackersTable extends Migration
         Schema::create('trackers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->foreignId('user_id')->constrained('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreignId('status_id')->constrained('status')
+            $table->foreignId('state_id')->constrained('states')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
