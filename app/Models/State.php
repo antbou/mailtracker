@@ -15,4 +15,9 @@ class State extends Model
     {
         return $this->hasMany(Tracker::class);
     }
+
+    public static function findBySlug(string $slug): State
+    {
+        return self::where('slug', $slug)->first();
+    }
 }
