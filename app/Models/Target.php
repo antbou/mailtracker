@@ -9,5 +9,11 @@ class Target extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ip',
+        'user_agent',
+        'tracker_id',
+    ];
+
     public $timestamps = false;
 }

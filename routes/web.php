@@ -19,6 +19,7 @@ use App\Http\Controllers\TrackerController;
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [TrackerController::class, 'index'])->name('homepage');
+    Route::get('/tracking/{tracker}', [TrackerController::class, 'tracking'])->name('tracking');
     Route::resource('tracker', TrackerController::class);
 });
 

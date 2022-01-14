@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use App\Models\Tracker;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTrackerRequest;
 use App\Http\Requests\UpdateTrackerRequest;
-use App\Models\State;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Target;
+use Illuminate\Http\Request;
 
 class TrackerController extends Controller
 {
@@ -38,13 +41,14 @@ class TrackerController extends Controller
      */
     public function store(StoreTrackerRequest $request)
     {
-        // dd($request->get('email-address'));
         $tracker = Tracker::create([
             'title' => $request->object,
             'email' => $request->get('email-address'),
             'user_id' => Auth::user()->id,
             'state_id' => State::findBySlug('OPN')->id
         ]);
+
+        return redirect()->route('tracker.show', ['tracker' => $tracker]);
     }
 
     /**
@@ -55,7 +59,7 @@ class TrackerController extends Controller
      */
     public function show(Tracker $tracker)
     {
-        //
+        return view('tracker.show', ['tracker' => $tracker]);
     }
 
     /**
@@ -90,5 +94,21 @@ class TrackerController extends Controller
     public function destroy(Tracker $tracker)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Tracker  $tracker
+     * @return \Illuminate\Http\Response
+     */
+    public function tracking(Request $request, Tracker $tracker)
+    {
+        Target::create([
+            'ip' => $request->ip(),
+            'user_agent' => $request->server('HTTP_USER_AGENT'),
+            'tracker_id' => $tracker->id,
+        ]);
+        return Storage::response('1x1.png', null, ['Content-Type' => 'image/png']);
     }
 }

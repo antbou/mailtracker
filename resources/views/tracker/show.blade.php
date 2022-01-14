@@ -26,13 +26,13 @@
                             </th>
                         </tr>
                     </thead>
-                    @foreach ($trackers as $tracker)
+                    
                     <tbody class="text-sm divide-y divide-gray-100">
                         <tr>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="flex items-center">
                                     
-                                    <div class="font-medium text-gray-800"><a href="{{ route('tracker.show', ['tracker' => $tracker]) }}">{{ $tracker->title }}</a></div>
+                                    <div class="font-medium text-gray-800"><a href="">{{ $tracker->title }}</a></div>
                                 </div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                     </tbody>
-                    @endforeach
+                   
                 </table>
             </div>
         </div>
