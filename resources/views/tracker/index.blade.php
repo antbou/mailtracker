@@ -22,7 +22,7 @@
                                 <div class="font-semibold text-left">créer a</div>
                             </th>
                             <th class="p-2 whitespace-nowrap">
-                                <div class="font-semibold text-center">Open at</div>
+                                <div class="font-semibold text-center">Nombre d'ouverture</div>
                             </th>
                         </tr>
                     </thead>
