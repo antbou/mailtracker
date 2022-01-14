@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\TrackerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,13 @@ use App\Http\Controllers\MailController;
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', [TrackerController::class, 'index'])->name('homepage');
+    Route::resource('tracker', TrackerController::class);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route after login
+Route::get('/redirects', function () {
+    return redirect()->route('homepage');
+});
 
 require __DIR__ . '/auth.php';
-
-Route::get('/mails', [MailController::class, 'index']);

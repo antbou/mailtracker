@@ -13,4 +13,9 @@ class Tracker extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function targets()
+    {
+        return $this->hasMany(Target::class);
+    }
 }
