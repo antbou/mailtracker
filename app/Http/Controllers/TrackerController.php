@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tracker;
 use App\Http\Requests\StoreTrackerRequest;
 use App\Http\Requests\UpdateTrackerRequest;
+use App\Models\State;
 use Illuminate\Support\Facades\Auth;
 
 class TrackerController extends Controller
@@ -26,7 +27,7 @@ class TrackerController extends Controller
      */
     public function create()
     {
-        //
+        return view('tracker.create');
     }
 
     /**
@@ -37,7 +38,13 @@ class TrackerController extends Controller
      */
     public function store(StoreTrackerRequest $request)
     {
-        //
+        // dd($request->get('email-address'));
+        $tracker = Tracker::create([
+            'title' => $request->object,
+            'email' => $request->get('email-address'),
+            'user_id' => Auth::user()->id,
+            'state_id' => State::findBySlug('OPN')->id
+        ]);
     }
 
     /**

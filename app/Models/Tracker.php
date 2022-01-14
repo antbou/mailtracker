@@ -8,6 +8,12 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Tracker extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'email',
+        'user_id',
+        'state_id'
+    ];
 
     public function state()
     {
