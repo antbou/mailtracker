@@ -24,23 +24,25 @@ composer i
 npm i
 npm run dev
 docker-compose up -d
+php artisan serve
 ```
 
 ## Usage
 
 The different local variables are found in the .env file which must be located at the root of the project. An example file is available at the root of the project under .env.example
 
-#### MySQL
+#### MongoDB
+
+[Mongodb](https://www.php.net/manual/en/mongodb.installation.php) php extension is required.
 
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
-DB_PORT=9906
+DB_PORT=27017
 DB_DATABASE=<CHANGE>
 DB_USERNAME=<CHANGE>
 DB_PASSWORD=<CHANGE>
 ```
-
 
 #### Redis
 ```
@@ -54,7 +56,7 @@ REDIS_PASSWORD=null
 REDIS_PORT=9379
 ```
 
-### docker :
+### Docker
 
 We used docker to facilitate the installation and development of the project. This way we can abstract the host on which the project is developed.
 
