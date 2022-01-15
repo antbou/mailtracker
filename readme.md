@@ -60,16 +60,6 @@ REDIS_PORT=9379
 
 We used docker to facilitate the installation and development of the project. This way we can abstract the host on which the project is developed.
 
-Local docker configuration file for MYSQL. An example file is available in docker/db-exemple.env
-The sample file is named `db-exemple.env`
-```
-# docker/db.env
-MYSQL_ROOT_PASSWORD=TO_CHANGE
-MYSQL_DATABASE=TO_CHANGE
-MYSQL_USER=TO_CHANGE # must be different than "root"
-MYSQL_PASSWORD=TO_CHANGE
-```
-
 ```
 # To be done at the first launch :
 docker-compose up
