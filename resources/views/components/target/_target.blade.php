@@ -11,7 +11,12 @@
             </div>
         </td>
         <td class="p-2 whitespace-nowrap">
-            <div class="text-left">{{ $target->user_agent }}</div>
+            <?php $agent->setUserAgent($target->user_agent); ?>
+            <div class="text-left">{{ $agent->browser() }} / {{ $agent->device() }} / {{ $agent->platform() }}
+            </div>
+        </td>
+        <td class="p-2 whitespace-nowrap">
+            <div class="text-left">{{ Str::words($target->user_agent, 6, $end = ' ...') }}</div>
         </td>
     </tr>
 </tbody>

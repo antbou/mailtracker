@@ -9,6 +9,9 @@
                     <div class="font-semibold text-left">IP</div>
                 </th>
                 <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">browser / device / platform</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-left">User Agent</div>
                 </th>
             </tr>

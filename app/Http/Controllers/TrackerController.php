@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\State;
+use App\Models\Target;
 use App\Models\Tracker;
+use Jenssegers\Agent\Agent;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTrackerRequest;
 use App\Http\Requests\UpdateTrackerRequest;
-use App\Models\Target;
-use Illuminate\Http\Request;
 
 class TrackerController extends Controller
 {
@@ -59,7 +60,8 @@ class TrackerController extends Controller
      */
     public function show(Tracker $tracker)
     {
-        return view('tracker.show', ['tracker' => $tracker]);
+        $agent = new Agent();
+        return view('tracker.show', ['tracker' => $tracker, 'agent' => $agent]);
     }
 
     /**
