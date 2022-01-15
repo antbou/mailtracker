@@ -36,7 +36,7 @@ The different local variables are found in the .env file which must be located a
 [Mongodb](https://www.php.net/manual/en/mongodb.installation.php) php extension is required.
 
 ```
-DB_CONNECTION=mysql
+DB_CONNECTION=mongodb
 DB_HOST=127.0.0.1
 DB_PORT=27017
 DB_DATABASE=<CHANGE>
