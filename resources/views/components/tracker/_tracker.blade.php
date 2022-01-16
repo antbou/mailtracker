@@ -35,7 +35,7 @@
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
         <a href="{{ route('tracker.show', ['tracker' => $tracker]) }}"
             class="text-blue-400 hover:text-blue-600 underline">Détails</a>
-        <a href="#" class="text-blue-400 hover:text-blue-600 underline pl-3">Edit</a>
+        <a href="{{ route('tracker.edit', ['tracker' => $tracker]) }}" class="text-blue-400 hover:text-blue-600 underline pl-3">Edit</a>
         <form class="inline" action="{{route('tracker.destroy',['tracker' => $tracker])}}" method="post">
             @csrf
             @method('delete')

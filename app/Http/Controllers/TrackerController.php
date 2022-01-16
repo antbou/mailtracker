@@ -37,7 +37,7 @@ class TrackerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTrackerRequest  $request
+     * @param \App\Http\Requests\StoreTrackerRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTrackerRequest $request)
@@ -55,7 +55,7 @@ class TrackerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tracker  $tracker
+     * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
     public function show(Tracker $tracker)
@@ -67,30 +67,34 @@ class TrackerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tracker  $tracker
+     * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
     public function edit(Tracker $tracker)
     {
-        dd($tracker);
+        return view('tracker.edit', compact('tracker'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTrackerRequest  $request
-     * @param  \App\Models\Tracker  $tracker
+     * @param \App\Http\Requests\UpdateTrackerRequest $request
+     * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTrackerRequest $request, Tracker $tracker)
+    public function update(Request $request, Tracker $tracker)
     {
-        //
+        $data = Tracker::findOrfail($tracker->_id);
+        $data->title = $request->object;
+        $data->email = $request->get('email-address');
+        $data->save();
+        return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tracker  $tracker
+     * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tracker $tracker)
@@ -102,7 +106,7 @@ class TrackerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tracker  $tracker
+     * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
     public function tracking(Request $request, Tracker $tracker)
