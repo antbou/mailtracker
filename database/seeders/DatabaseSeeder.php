@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Target;
-use App\Models\Tracker;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

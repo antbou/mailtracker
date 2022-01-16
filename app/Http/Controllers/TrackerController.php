@@ -46,7 +46,7 @@ class TrackerController extends Controller
             'title' => $request->object,
             'email' => $request->get('email-address'),
             'user_id' => Auth::user()->id,
-            'state_id' => State::findBySlug('OPN')->id
+            'state_id' => State::findBySlug('WYT')->id
         ]);
 
         return redirect()->route('tracker.show', ['tracker' => $tracker]);
@@ -72,7 +72,7 @@ class TrackerController extends Controller
      */
     public function edit(Tracker $tracker)
     {
-        //
+        dd($tracker);
     }
 
     /**
@@ -95,7 +95,8 @@ class TrackerController extends Controller
      */
     public function destroy(Tracker $tracker)
     {
-        //
+        Tracker::destroy($tracker->_id);
+        return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
     }
 
     /**
