@@ -121,6 +121,8 @@ class TrackerController extends Controller
     public function destroy(Tracker $tracker)
     {
         Tracker::destroy($tracker->_id);
+        $id = auth()->user()->_id;
+        Redis::zrem("user.{$id}",time(),$tracker->_id);
         return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
     }
 
