@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class State extends Model
 {
@@ -14,5 +14,10 @@ class State extends Model
     public function tracker()
     {
         return $this->hasMany(Tracker::class);
+    }
+
+    public static function findBySlug(string $slug): State
+    {
+        return self::where('slug', $slug)->first();
     }
 }

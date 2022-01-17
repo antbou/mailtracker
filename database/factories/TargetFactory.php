@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TargetFactory extends Factory
 {
+
     /**
      * Define the model's default state.
      *
@@ -19,5 +20,12 @@ class TargetFactory extends Factory
             'user_agent' => $this->faker->userAgent,
             'tracker_id' => Tracker::all()->random()->id,
         ];
+    }
+
+    public function withTrackerId($id)
+    {
+        return $this->state([
+            'tracker_id' => $id,
+        ]);
     }
 }
