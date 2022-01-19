@@ -1,6 +1,6 @@
-@extends('layouts/layout')
+<x-app-layout>
 
-@section('content')
+
     <div class="flex flex-col justify-center h-full">
         <!-- Table -->
         <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
@@ -13,13 +13,14 @@
                         <div class="w-8/12 bg-white p-6 rounded-lg">
                             <div>
                                 <ul class="font-bold text-3xl p-6 bg-white flex justify-between mb-6 md:p-8 ">
-                                    <li><a href="{{route('statistics.status')}}">status</a></li>
+                                    <li><a href="{{ route('statistics.status') }}">status</a></li>
                                 </ul>
-                            </div> @yield('chart') </div>
+                            </div> @yield('chart')
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-@endsection
+</x-app-layout>

@@ -1,11 +1,13 @@
-@extends('statistics.index')
-@section('chart')
+<x-app-layout>
     <div class="flex justify-center">
-        <div class="w-8/12 bg-white p-6 rounded-lg"> <!-- Chart's container -->
+        <div class="w-8/12 bg-white p-6 rounded-lg">
+            <!-- Chart's container -->
             <div id="chart" style="height: 300px;"></div> <!-- Charting library -->
-            <script src="https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js"></script> <!-- Chartisan -->
+            <script src="https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js"></script>
+            <!-- Chartisan -->
             <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
-            <script> const chart = new Chartisan({
+            <script>
+                const chart = new Chartisan({
                     el: '#chart',
                     url: "@chart('status_chart')",
                     hooks: new ChartisanHooks()
@@ -13,7 +15,8 @@
                         .datasets('doughnut')
                         .title('Status des tracking')
                         .pieColors()
-                }); </script>
+                });
+            </script>
         </div>
     </div>
-@endsection
+</x-app-layout>

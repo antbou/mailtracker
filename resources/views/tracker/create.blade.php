@@ -1,7 +1,3 @@
-@extends('layouts/layout')
-
-@section('content')
-
-@include('components.forms.input')
-
-@endsection
+<x-app-layout>
+    @include('partials.forms.input')
+</x-app-layout>

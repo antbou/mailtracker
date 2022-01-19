@@ -1,7 +1,3 @@
-@extends('layouts/layout')
-
-@section('content')
-
-@include('components.forms.inputEdit')
-
-@endsection
+<x-app-layout>
+    @include('partials.forms.inputEdit')
+</x-app-layout>

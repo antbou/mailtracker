@@ -19,11 +19,11 @@
     </thead>
     <tbody>
         @isset($tracker)
-            @include('components.tracker._tracker')
+            @include('partials.tracker._tracker')
         @endisset
         @isset($trackers)
             @foreach ($trackers as $tracker)
-                @include('components.tracker._tracker')
+                @include('partials.tracker._tracker')
             @endforeach
         @endisset
     </tbody>
