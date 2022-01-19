@@ -148,6 +148,13 @@ class TrackerController extends Controller
             'tracker_id' => $tracker->id,
         ]);
 
+        $sate = State::findBySlug('OPN');
+
+        if ($tracker->state() !== $sate) {
+            $tracker->state_id = $sate->id;
+            $tracker->save();
+        }
+
         return Storage::response('1x1.png', null, ['Content-Type' => 'image/png']);
     }
 }
