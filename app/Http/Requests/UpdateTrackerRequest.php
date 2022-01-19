@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateTrackerRequest extends FormRequest
@@ -13,7 +14,7 @@ class UpdateTrackerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateTrackerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'object' => 'required|max:255',
+            'email-address' => 'required|email|max:255',
         ];
     }
 }

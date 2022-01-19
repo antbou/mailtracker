@@ -106,7 +106,7 @@ class TrackerController extends Controller
      * @param \App\Models\Tracker $tracker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tracker $tracker)
+    public function update(UpdateTrackerRequest $request, Tracker $tracker)
     {
         $this->authorize('view', $tracker);
 
@@ -116,7 +116,7 @@ class TrackerController extends Controller
         $data->save();
         $id = auth()->user()->_id;
         Redis::zadd("user.{$id}", time(), $tracker->_id);
-        return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
+        return redirect()->route('tracker.show', ['tracker' => $tracker]);
     }
 
     /**
@@ -131,7 +131,7 @@ class TrackerController extends Controller
         Tracker::destroy($tracker->_id);
         $id = auth()->user()->_id;
         Redis::zrem("user.{$id}", time(), $tracker->_id);
-        return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
+        return redirect()->route('homepage');
     }
 
     /**
