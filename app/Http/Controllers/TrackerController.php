@@ -110,10 +110,13 @@ class TrackerController extends Controller
     {
         $this->authorize('view', $tracker);
 
-        $data = Tracker::findOrfail($tracker->_id);
-        $data->title = $request->object;
-        $data->email = $request->get('email-address');
-        $data->save();
+        $tracker = Tracker::findOrfail($tracker->_id);
+
+        $tracker->title = $request->object;
+        $tracker->email = $request->get('email-address');
+        $tracker->state_id = State::findBySlug($request->state)->id;
+
+        $tracker->save();
         $id = auth()->user()->_id;
         Redis::zadd("user.{$id}", time(), $tracker->_id);
         return redirect()->route('tracker.show', ['tracker' => $tracker]);
@@ -142,6 +145,11 @@ class TrackerController extends Controller
      */
     public function tracking(Request $request, Tracker $tracker)
     {
+
+        if ($tracker->state == State::findBySlug('CLD')) {
+            return abort(404, 'Page not found.');
+        }
+
         Target::create([
             'ip' => $request->ip(),
             'user_agent' => $request->server('HTTP_USER_AGENT'),
@@ -149,7 +157,6 @@ class TrackerController extends Controller
         ]);
 
         $sate = State::findBySlug('OPN');
-
         if ($tracker->state() !== $sate) {
             $tracker->state_id = $sate->id;
             $tracker->save();
