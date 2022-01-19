@@ -23,15 +23,15 @@ class TrackerController extends Controller
     public function index()
     {
         $id = auth()->user()->_id;
-        if( !Redis::zcard("user.{$id}")){
-            $trackers = Tracker::all()->where('user_id',auth()->user()->_id);
+        if (!Redis::zcard("user.{$id}")) {
+            $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
             foreach ($trackers as $tracker)
-                Redis::zadd("user.{$id}",1,$tracker->_id);
+                Redis::zadd("user.{$id}", 1, $tracker->_id);
         }
 
-        $recentIds = Redis::zrevrange("user.{$id}",0,-1);
+        $recentIds = Redis::zrevrange("user.{$id}", 0, -1);
         $trackers = collect($recentIds)->map(function ($id) {
-           return Tracker::find($id);
+            return Tracker::find($id);
         });
 
 
@@ -62,8 +62,9 @@ class TrackerController extends Controller
             'user_id' => Auth::user()->id,
             'state_id' => State::findBySlug('WYT')->id
         ]);
+
         $id = auth()->user()->_id;
-        Redis::zadd("user.{$id}",time(),$tracker->_id);
+        Redis::zadd("user.{$id}", time(), $tracker->_id);
         return redirect()->route('tracker.show', ['tracker' => $tracker]);
     }
 
@@ -75,8 +76,10 @@ class TrackerController extends Controller
      */
     public function show(Tracker $tracker)
     {
+        $this->authorize('view', $tracker);
+
         $id = auth()->user()->_id;
-        Redis::zadd("user.{$id}",time(),$tracker->_id);
+        Redis::zadd("user.{$id}", time(), $tracker->_id);
         $agent = new Agent();
         return view('tracker.show', ['tracker' => $tracker, 'agent' => $agent]);
     }
@@ -89,8 +92,10 @@ class TrackerController extends Controller
      */
     public function edit(Tracker $tracker)
     {
+        $this->authorize('view', $tracker);
+
         $id = auth()->user()->_id;
-        Redis::zadd("user.{$id}",time(),$tracker->_id);
+        Redis::zadd("user.{$id}", time(), $tracker->_id);
         return view('tracker.edit', compact('tracker'));
     }
 
@@ -103,12 +108,14 @@ class TrackerController extends Controller
      */
     public function update(Request $request, Tracker $tracker)
     {
+        $this->authorize('view', $tracker);
+
         $data = Tracker::findOrfail($tracker->_id);
         $data->title = $request->object;
         $data->email = $request->get('email-address');
         $data->save();
         $id = auth()->user()->_id;
-        Redis::zadd("user.{$id}",time(),$tracker->_id);
+        Redis::zadd("user.{$id}", time(), $tracker->_id);
         return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
     }
 
@@ -120,9 +127,10 @@ class TrackerController extends Controller
      */
     public function destroy(Tracker $tracker)
     {
+        $this->authorize('view', $tracker);
         Tracker::destroy($tracker->_id);
         $id = auth()->user()->_id;
-        Redis::zrem("user.{$id}",time(),$tracker->_id);
+        Redis::zrem("user.{$id}", time(), $tracker->_id);
         return view('tracker.index', ['trackers' => auth()->user()->trackers()->get()]);
     }
 
@@ -139,6 +147,7 @@ class TrackerController extends Controller
             'user_agent' => $request->server('HTTP_USER_AGENT'),
             'tracker_id' => $tracker->id,
         ]);
+
         return Storage::response('1x1.png', null, ['Content-Type' => 'image/png']);
     }
 }
