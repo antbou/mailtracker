@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Charts\StatusChart;
+use ConsoleTVs\Charts\Registrar;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +23,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    //register our chart
+    public function boot(Registrar $charts)
     {
-        //
+        $charts->register([StatusChart::class]);
     }
 }
