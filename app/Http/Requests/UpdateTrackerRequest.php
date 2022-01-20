@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\State;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,6 +29,7 @@ class UpdateTrackerRequest extends FormRequest
         return [
             'object' => 'required|max:255',
             'email-address' => 'required|email|max:255',
+            'state' => Rule::in(State::allAvailable()->pluck('slug')),
         ];
     }
 }
