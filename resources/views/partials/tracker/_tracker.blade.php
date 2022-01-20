@@ -24,19 +24,17 @@
     <td
         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-        @if ($tracker->state->name === 'OPN')
-
-        @endif
         <span
-            class="rounded {{ $tracker->state->slug === 'OPN' ? 'bg-green-400' : 'bg-yellow-400' }} py-1 px-3 text-xs font-bold">{{ $tracker->state->name }}</span>
+            class="rounded {{ $tracker->state->slug === 'OPN' ? 'bg-green-400' : ($tracker->state->slug == 'CLD' ? 'bg-red-400' : 'bg-yellow-400') }} py-1 px-3 text-xs font-bold">{{ $tracker->state->name }}</span>
     </td>
     <td
         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
         <a href="{{ route('tracker.show', ['tracker' => $tracker]) }}"
             class="text-blue-400 hover:text-blue-600 underline">Détails</a>
-        <a href="{{ route('tracker.edit', ['tracker' => $tracker]) }}" class="text-blue-400 hover:text-blue-600 underline pl-3">Edit</a>
-        <form class="inline" action="{{route('tracker.destroy',['tracker' => $tracker])}}" method="post">
+        <a href="{{ route('tracker.edit', ['tracker' => $tracker]) }}"
+            class="text-blue-400 hover:text-blue-600 underline pl-3">Edit</a>
+        <form class="inline" action="{{ route('tracker.destroy', ['tracker' => $tracker]) }}" method="post">
             @csrf
             @method('delete')
             <button title="Destroy">
