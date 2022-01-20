@@ -46,6 +46,9 @@
                                             {{ $state->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('state')
+                                    <div class="block text-sm font-medium text-red-400">{{ $message }}</div>
+                                @enderror
 
                                 @error('email-address')
                                     <div class="block text-sm font-medium text-red-400">{{ $message }}</div>
