@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Charts\BrowserChart;
+use App\Charts\CountryChart;
+use App\Charts\DeviceChart;
+use App\Charts\PlatformChart;
 use App\Charts\StatusChart;
 use ConsoleTVs\Charts\Registrar;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
     //register our chart
     public function boot(Registrar $charts)
     {
-        $charts->register([StatusChart::class]);
+        $charts->register([
+            StatusChart::class,
+            BrowserChart::class,
+            CountryChart::class,
+            DeviceChart::class,
+            PlatformChart::class
+        ]);
     }
 }

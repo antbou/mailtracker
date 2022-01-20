@@ -10,12 +10,11 @@
             <script>
                 const chart = new Chartisan({
                     el: '#chart',
-                    url: "@chart('status_chart')",
+                    url: "@chart('platform_chart')",
                     hooks: new ChartisanHooks()
                         .colors()
-                        .datasets('doughnut')
-                        .title('Status des tracking')
-                        .pieColors()
+                        .beginAtZero()
+                        .title('platforms')
                 });
             </script>
         </div>

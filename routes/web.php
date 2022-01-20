@@ -23,6 +23,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('tracker', TrackerController::class);
     Route::get('/statics',[StatisticController::class,'index'])->name('statistics');
     Route::get('/statics/status',[StatisticController::class,'status'])->name('statistics.status');
+    Route::get('/statics/browser',[StatisticController::class,'browser'])->name('statistics.browser');
+    Route::get('/statics/device',[StatisticController::class,'device'])->name('statistics.device');
+    Route::get('/statics/platform',[StatisticController::class,'platform'])->name('statistics.platform');
+    Route::get('/statics/country',[StatisticController::class,'country'])->name('statistics.country');
 });
 
 // Route after login
