@@ -18,6 +18,7 @@ class CountryChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+
         $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
         foreach ($trackers as $tracker => $key ){
             foreach ($key->targets as $target){

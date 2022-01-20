@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\State;
-use App\Models\Tracker;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 class StatisticController extends Controller
 {
-   public function index (){
-       return view('statistics.index');
-   }
-   public function status(){
-       return view('statistics.status');
-   }
-    public function browser(){
+    public function index()
+    {
+        return view('statistics.index');
+    }
+
+    public function status()
+    {
+        return view('statistics.status');
+    }
+
+    public function browser()
+    {
         return view('statistics.browser');
     }
-    public function device(){
+
+    public function device()
+    {
         return view('statistics.device');
     }
-    public function platform(){
+
+    public function platform()
+    {
         return view('statistics.platform');
     }
-    public function country(){
+
+    public function country()
+    {
         return view('statistics.country');
     }
 }
