@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\State;
 use App\Models\Tracker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class StatisticController extends Controller
 {

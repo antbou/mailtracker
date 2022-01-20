@@ -16,7 +16,7 @@ class TargetFactory extends Factory
     public function definition()
     {
         return [
-            'ip' => $this->faker->localIpv4,
+            'ip' => $this->faker->ipv4,
             'user_agent' => $this->faker->userAgent,
             'tracker_id' => Tracker::all()->random()->id,
         ];

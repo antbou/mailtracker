@@ -16,7 +16,7 @@ class TargetSeeder extends Seeder
     public function run()
     {
         foreach (Tracker::all() as $tracker) {
-            for ($i = 0; $i < rand(0, 5); $i++) {
+            for ($i = 0; $i < rand(3, 10); $i++) {
                 Target::factory()->withTrackerId($tracker->id)->create();
             }
         }
