@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Charts;
 
@@ -19,25 +19,32 @@ class CountryChart extends BaseChart
     public function handler(Request $request): Chartisan
     {
 
-        $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
-        foreach ($trackers as $tracker => $key ){
-            foreach ($key->targets as $target){
-                if(\Location::get($target->ip)){
-                    $countries[] =\Location::get($target->ip)->countryName;
+        $trackers = [];
+
+        if ($request->tracker) {
+            $trackers = [Tracker::where('_id', $request->tracker)->where('user_id', auth()->user()->_id)->firstOrFail()];
+        } else {
+            $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
+        }
+
+        foreach ($trackers as $tracker => $key) {
+            foreach ($key->targets as $target) {
+                if (\Location::get($target->ip)) {
+                    $countries[] = \Location::get($target->ip)->countryName;
                 }
             }
         }
-        $pays=[];
-        foreach ($countries as $country){
-            if(!array_key_exists($country, $pays)){
+        $pays = [];
+        foreach ($countries as $country) {
+            if (!array_key_exists($country, $pays)) {
                 $pays[$country] = 1;
-            }else{
-                $pays[$country] ++;
+            } else {
+                $pays[$country]++;
             }
         }
 
         return Chartisan::build()
             ->labels(array_keys($pays))
-            ->dataset('Pays',array_values($pays) );
+            ->dataset('Pays', array_values($pays));
     }
 }

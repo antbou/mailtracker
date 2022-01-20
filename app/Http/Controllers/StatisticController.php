@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tracker;
 use Illuminate\Http\Request;
 
 class StatisticController extends Controller
@@ -31,8 +32,13 @@ class StatisticController extends Controller
         return view('statistics.platform');
     }
 
-    public function country()
+    public function country(Request $request)
     {
-        return view('statistics.country');
+        $tracker = null;
+        if ($request->tracker) {
+            $tracker = Tracker::findOrFail($request->tracker);
+            $this->authorize('view', $tracker);
+        }
+        return view('statistics.country', compact('tracker'));
     }
 }
