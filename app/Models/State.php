@@ -18,6 +18,11 @@ class State extends Model
 
     public static function findBySlug(string $slug): State
     {
-        return self::where('slug', $slug)->first();
+        return self::where('slug', $slug)->firstOrFail();
+    }
+
+    public static function allAvailable()
+    {
+        return State::where('slug', '!=', 'WYT');
     }
 }

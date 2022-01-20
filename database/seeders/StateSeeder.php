@@ -16,8 +16,9 @@ class StateSeeder extends Seeder
     {
         State::insert(
             [
-                ['name'=> 'Open' ,'slug'=>'OPN'],
-                ['name'=> 'Waiting' ,'slug'=>'WYT'],
+                ['name' => 'Open', 'slug' => 'OPN'],
+                ['name' => 'Waiting', 'slug' => 'WYT'],
+                ['name' => 'Closed', 'slug' => 'CLD'],
             ]
         );
     }
