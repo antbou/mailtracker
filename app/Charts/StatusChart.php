@@ -19,17 +19,21 @@ class StatusChart extends BaseChart
     public function handler(Request $request): Chartisan
     {
         $trackers = Tracker::all()->where('user_id',auth()->user()->_id);
-        $open=0;
-        $wating=0;
         foreach ($trackers as $tracker){
-            if($tracker->state->slug === 'OPN'){
-                $open++;
+            $listStates[] =$tracker->state->name;
+        }
+
+        $states = [];
+        foreach ($listStates as $state){
+            if(!array_key_exists($state, $states)){
+                $states[$state] = 1;
             }else{
-                $wating++;
+                $states[$state] ++;
             }
         }
+
         return Chartisan::build()
-            ->labels(['Open', 'Waiting'])
-            ->dataset('states', [$open, $wating]);
+            ->labels(array_keys($states))
+            ->dataset('Devices',array_values($states) );
     }
 }
