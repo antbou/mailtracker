@@ -30,8 +30,14 @@
     <td
         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-        <a href="{{ route('tracker.show', ['tracker' => $tracker]) }}"
-            class="text-blue-400 hover:text-blue-600 underline">Détails</a>
+        @if (isset($showStats))
+            <a href="{{ route('statistics', ['tracker' => $tracker->id]) }}"
+                class="text-blue-400 hover:text-blue-600 underline">Stats</a>
+        @else
+            <a href="{{ route('tracker.show', ['tracker' => $tracker]) }}"
+                class="text-blue-400 hover:text-blue-600 underline">Détails</a>
+        @endif
+
         <a href="{{ route('tracker.edit', ['tracker' => $tracker]) }}"
             class="text-blue-400 hover:text-blue-600 underline pl-3">Edit</a>
         <form class="inline" action="{{ route('tracker.destroy', ['tracker' => $tracker]) }}" method="post">

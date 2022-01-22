@@ -7,10 +7,7 @@
             </header>
             <div class="p-3">
                 <div class="overflow-x-auto">
-                    @include('partials.tracker._container')
-
-                    <a href="{{ route('statistics.country', ['tracker' => $tracker]) }}"
-                        class="text-blue-400 hover:text-blue-600 underline pl-3">Statisiques des pays</a>
+                    @include('partials.tracker._container', ['showStats'=>true])
 
                     <div class="pt-3">
                         <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">

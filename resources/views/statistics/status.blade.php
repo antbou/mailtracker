@@ -14,7 +14,7 @@
                     hooks: new ChartisanHooks()
                         .colors()
                         .datasets('doughnut')
-                        .title('Status des tracking')
+                        .title('Status des traqueurs')
                         .pieColors()
                 });
             </script>

@@ -10,11 +10,12 @@
             <script>
                 const chart = new Chartisan({
                     el: '#chart',
-                    url: "@chart('platform_chart')",
+                    url: "@chart('platform_chart')"
+                    @if ($tracker) {!! ' + ' . "'?tracker=$tracker->id'" !!} @endif,
                     hooks: new ChartisanHooks()
                         .colors()
                         .beginAtZero()
-                        .title('platforms')
+                        .title({!! $tracker ? "'Statisique des Plateformes pour <$tracker->title>'" : "'Plateformes'" !!})
                 });
             </script>
         </div>
