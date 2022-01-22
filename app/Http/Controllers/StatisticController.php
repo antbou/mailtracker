@@ -2,43 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tracker;
+
 use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('statistics.index');
+
+        return view('statistics.index', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 
-    public function status()
+    public function status(Request $request)
     {
-        return view('statistics.status');
+        return view('statistics.status', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 
-    public function browser()
+    public function browser(Request $request)
     {
-        return view('statistics.browser');
+        return view('statistics.browser', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 
-    public function device()
+    public function device(Request $request)
     {
-        return view('statistics.device');
+        return view('statistics.device', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 
-    public function platform()
+    public function platform(Request $request)
     {
-        return view('statistics.platform');
+        return view('statistics.platform', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 
     public function country(Request $request)
     {
-        $tracker = null;
-        if ($request->tracker) {
-            $tracker = Tracker::findOrFail($request->tracker);
-            $this->authorize('view', $tracker);
-        }
-        return view('statistics.country', compact('tracker'));
+        return view('statistics.country', ['tracker' => $this->getTrackerByRequestIfExistsAndAuthorize($request)]);
     }
 }
