@@ -13,13 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-breeze.nav-link :href="route('homepage')" :active="request()->routeIs('homepage')">
-                        {{ __('Home') }}
+                        {{ __('Liste des traqueurs') }}
                     </x-breeze.nav-link>
                     <x-breeze.nav-link :href="route('tracker.create')" :active="request()->routeIs('tracker.create')">
-                        {{ __('Créer un tracker') }}
+                        {{ __('Créer un traqueur') }}
                     </x-breeze.nav-link>
                     <x-breeze.nav-link :href="route('statistics')" :active="request()->routeIs('statistics')">
-                        {{ __('Statistics') }}
+                        {{ __('Statistiques') }}
                     </x-breeze.nav-link>
                 </div>
             </div>
@@ -84,14 +84,14 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-breeze.responsive-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')">
-                {{ __('Home') }}
+                {{ __('Liste des traqueurs') }}
             </x-breeze.responsive-nav-link>
             <x-breeze.responsive-nav-link :href="route('tracker.create')"
                 :active="request()->routeIs('tracker.create')">
-                {{ __('Créer un tracker') }}
+                {{ __('Créer un traqueur') }}
             </x-breeze.responsive-nav-link>
             <x-breeze.responsive-nav-link :href="route('statistics')" :active="request()->routeIs('statistics')">
-                {{ __('Statistics') }}
+                {{ __('Statistiques') }}
             </x-breeze.responsive-nav-link>
 
             <!-- Responsive Settings Options -->
