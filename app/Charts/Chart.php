@@ -4,11 +4,10 @@ namespace App\Charts;
 
 use App\Models\Tracker;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
 
 trait Chart
 {
-    public function trackers(Request $request): Collection
+    public function trackers(Request $request)
     {
         if ($request->tracker) {
             return [Tracker::where('_id', $request->tracker)->where('user_id', auth()->user()->_id)->firstOrFail()];

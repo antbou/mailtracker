@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Charts;
 
@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 
 class StatusChart extends BaseChart
 {
+    use Chart;
+
     /**
      * Handles the HTTP request for the given chart.
      * It must always return an instance of Chartisan
@@ -18,22 +20,22 @@ class StatusChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $trackers = Tracker::all()->where('user_id',auth()->user()->_id);
-        foreach ($trackers as $tracker){
-            $listStates[] =$tracker->state->name;
+        $trackers = $this->trackers($request);
+        foreach ($trackers as $tracker) {
+            $listStates[] = $tracker->state->name;
         }
 
         $states = [];
-        foreach ($listStates as $state){
-            if(!array_key_exists($state, $states)){
+        foreach ($listStates as $state) {
+            if (!array_key_exists($state, $states)) {
                 $states[$state] = 1;
-            }else{
-                $states[$state] ++;
+            } else {
+                $states[$state]++;
             }
         }
 
         return Chartisan::build()
             ->labels(array_keys($states))
-            ->dataset('Devices',array_values($states) );
+            ->dataset('Devices', array_values($states));
     }
 }

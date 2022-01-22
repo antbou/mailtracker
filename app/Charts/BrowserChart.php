@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Charts;
 
-use App\Models\Tracker;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
@@ -12,6 +11,8 @@ use Jenssegers\Agent\Agent;
 
 class BrowserChart extends BaseChart
 {
+    use Chart;
+
     /**
      * Handles the HTTP request for the given chart.
      * It must always return an instance of Chartisan
@@ -19,9 +20,10 @@ class BrowserChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+
+        $trackers = $this->trackers($request);
         $agent = new Agent();
 
-        $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {
                 $agent->setUserAgent($target->user_agent);
