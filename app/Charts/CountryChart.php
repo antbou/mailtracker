@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class CountryChart extends BaseChart
 {
+    use Chart;
     /**
      * Handles the HTTP request for the given chart.
      * It must always return an instance of Chartisan
@@ -19,7 +20,7 @@ class CountryChart extends BaseChart
     public function handler(Request $request): Chartisan
     {
 
-        $trackers = [];
+        $trackers = $this->trackers($request);
 
         if ($request->tracker) {
             $trackers = [Tracker::where('_id', $request->tracker)->where('user_id', auth()->user()->_id)->firstOrFail()];
@@ -30,11 +31,12 @@ class CountryChart extends BaseChart
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {
                 if (\Location::get($target->ip)) {
-                    $countries[] = \Location::get($target->ip)->countryName;
+                    $countries[] = \Location::get($target->ip)->countryName == null ? 'Country not found' : \Location::get($target->ip)->countryName;
                 }
             }
         }
         $pays = [];
+
         foreach ($countries as $country) {
             if (!array_key_exists($country, $pays)) {
                 $pays[$country] = 1;
