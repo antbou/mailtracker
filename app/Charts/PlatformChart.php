@@ -23,6 +23,7 @@ class PlatformChart extends BaseChart
     {
         $agent = new Agent();
         $trackers = $this->trackers($request);
+        $agentPlatforms = [];
 
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {

@@ -24,6 +24,8 @@ class BrowserChart extends BaseChart
         $trackers = $this->trackers($request);
         $agent = new Agent();
 
+        $agentBrowsers = [];
+
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {
                 $agent->setUserAgent($target->user_agent);

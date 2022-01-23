@@ -28,6 +28,8 @@ class CountryChart extends BaseChart
             $trackers = Tracker::all()->where('user_id', auth()->user()->_id);
         }
 
+        $countries = [];
+
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {
                 if (\Location::get($target->ip)) {

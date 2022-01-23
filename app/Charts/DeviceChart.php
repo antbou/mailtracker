@@ -24,6 +24,7 @@ class DeviceChart extends BaseChart
 
         $trackers = $this->trackers($request);
         $agent = new Agent();
+        $agentDevices = [];
 
         foreach ($trackers as $tracker => $key) {
             foreach ($key->targets as $target) {
