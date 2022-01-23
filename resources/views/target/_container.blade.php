@@ -18,7 +18,7 @@
         </thead>
 
         @foreach ($targets as $target)
-            @include('partials.target._target')
+            @include('target._target')
         @endforeach
 
     </table>
