@@ -72,7 +72,6 @@ DB_PORT=27017
 DB_DATABASE=<CHANGE>
 DB_USERNAME=<CHANGE>
 DB_PASSWORD=<CHANGE>
-
 ```
 
 ### Redis
@@ -88,7 +87,6 @@ MEMCACHED_HOST=127.0.0.1
 REDIS_HOST=127.0.0.1
 REDIS_PASSWORD=null
 REDIS_PORT=9379
-
 ```
 
 ### Docker
@@ -112,3 +110,7 @@ php artisan migrate:fresh --seed
 ## Database model
 
 ![MCD](/documents/db/MCD.png)
+
+## Deployment
+
+To launch the application in production, just follow the [guide](https://laravel.com/docs/8.x/deployment) provided by the laravel community
