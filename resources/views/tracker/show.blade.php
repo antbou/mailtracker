@@ -7,7 +7,7 @@
             </header>
             <div class="p-3">
                 <div class="overflow-x-auto">
-                    @include('partials.tracker._container', ['showStats'=>true])
+                    @include('tracker._container', ['showStats'=>true])
 
                     <div class="pt-3">
                         <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
@@ -16,7 +16,7 @@
                             </header>
                             <div class="p-3">
 
-                                @include('partials.target._container', ['targets' => $tracker->targets()->get()])
+                                @include('target._container', ['targets' => $tracker->targets()->get()])
                             </div>
                         </div>
                     </div>

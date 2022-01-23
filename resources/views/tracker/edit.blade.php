@@ -1,3 +1,3 @@
 <x-app-layout>
-    @include('partials.forms.inputEdit')
+    @include('tracker.forms.inputEdit')
 </x-app-layout>

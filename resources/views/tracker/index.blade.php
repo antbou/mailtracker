@@ -7,7 +7,7 @@
             </header>
             <div class="p-3">
                 <div class="overflow-x-auto">
-                    @include('partials.tracker._container')
+                    @include('tracker._container')
                 </div>
             </div>
         </div>
