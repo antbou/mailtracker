@@ -13,7 +13,7 @@ Perform for NOSQL1
 | Images (Docker)                         |
 | --------------------------------------- |
 | [redis](https://hub.docker.com/_/redis) |
-| [mysql](https://hub.docker.com/_/mysql) |
+| [mongo](https://hub.docker.com/_/mongo) |
 
 ## Installation
 
