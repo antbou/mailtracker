@@ -2,6 +2,9 @@
 
 Perform for NOSQL1
 
+
+Group : `Bouillant Anthony`, `TESFAZGHI Robiel` and `SAMOUTPHONH Souphakone`.
+
 ## Requirements
 
 | Tools                                         | Version |
@@ -109,7 +112,11 @@ php artisan migrate:fresh --seed
 
 ## Database model
 
-![MCD](/documents/db/MCD.png)
+### MCD
+![MCD](/documents/db/MCD.png )
+
+### Final schema
+![Final schema](/documents/db/schema.png)
 
 ## Deployment
 
